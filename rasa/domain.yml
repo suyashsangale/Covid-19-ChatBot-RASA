@@ -1,0 +1,104 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - mood_news
+  - mood_cases
+  - mood_state
+  - mood_world
+  - mood_india
+  - mood_testing_centre
+  - mood_emergency
+
+entities:
+  - state
+
+slots:
+  state:
+    type: text
+
+
+actions:
+- action_introduction
+- action_state_response
+- action_show_news_india
+- action_show_news_world
+- action_show_testing_centre
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_emergency:
+  - text: "For any COVID 19 related queries, call your State Helpline/Ministry of Health & Family Welfare's 24X7 helpline at <a href='tel:1075'>1075</a> or <a href='tel:011-23978046'>011-23978046</a>. Click <a href = 'https://www.mygov.in/covid-19' target='_blank'> here</a> for more information"
+
+  utter_introduction:
+  - text: 
+    buttons:
+      - title: "COVID India Cases"
+        payload : '/mood_cases'
+      - title: "Latest News"
+        payload : '/mood_news'
+      - title: "Covid Testing Centre's Near Me"
+        payload : '/mood_testing_centre'
+
+  utter_news_option:
+  - text: "Select one of the option : "
+    buttons:
+      - title: "COVID-19 World"
+        payload : '/mood_world'
+      - title: "COVID-19 India"
+        payload : '/mood_india'
+  
+  utter_enter_state:
+  - text: "Enter the state name" 
+
+
+  utter_pie_chart:
+  - text: "State Details"
+    custom:
+      payload: chart
+      data:
+        title: Leaves
+        labels:
+        - Active
+        - Confirmed
+        - Deaths
+        - Recovered
+        backgroundColor:
+        - "#36a2eb"
+        - "#ffcd56"
+        - "#ff6384"
+        - "#009688"
+        - "#c45850"
+        chartsData:
+        - {active}
+        - 242
+        - 145
+        - 23
+        chartType: pie
+        displayLegend: 'true'
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
