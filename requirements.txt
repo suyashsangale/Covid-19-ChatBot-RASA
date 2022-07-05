@@ -161,7 +161,7 @@ terminaltables==3.1.0
 tqdm==4.31.1
 twilio==6.26.3
 tzlocal==2.1
-ujson==2.0.3
+ujson==5.4.0
 uritemplate==3.0.1
 urllib3==1.25.9
 wcwidth==0.2.4
